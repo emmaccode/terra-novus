@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://binth87lnfqgr"]
+
+[ext_resource type="Texture2D" uid="uid://doyfm4trnhby1" path="res://entities/foliage/bushes/fern1.svg" id="1_n21n6"]
+[ext_resource type="Script" path="res://dev/paneltestwind.gd" id="2_lji8u"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_n21n6")
+script = ExtResource("2_lji8u")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 1.15
+anchor_bottom = 0.202
+offset_left = -37.0
+offset_top = -114.0
+offset_right = -50.55
+offset_bottom = -112.934
+
+[node name="cont" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 50.0
+
+[node name="pos" type="Label" parent="Panel/cont"]
+layout_mode = 2
+text = "reteterttt"
+
+[node name="zindex" type="Label" parent="Panel/cont"]
+layout_mode = 2
+text = "reteterttt"

@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqo63gf4omp5w"]
+
+[ext_resource type="Script" path="res://characters/base character.gd" id="1_q2qcs"]
+[ext_resource type="Texture2D" uid="uid://djv1u1epv4biy" path="res://characters/body1/legr.svg" id="2_hll3k"]
+[ext_resource type="Texture2D" uid="uid://ctp7eve4qswkv" path="res://characters/body1/armf.svg" id="2_ulix6"]
+[ext_resource type="Texture2D" uid="uid://bhxu1b8h5pyld" path="res://characters/body1/armr.svg" id="3_23jk2"]
+[ext_resource type="Texture2D" uid="uid://dtcydapsrjghg" path="res://characters/body1/torso.svg" id="4_jc31j"]
+[ext_resource type="Texture2D" uid="uid://dcury70fmjm2q" path="res://characters/body1/head.svg" id="5_a1dum"]
+[ext_resource type="Texture2D" uid="uid://cjcopud3jx1ep" path="res://characters/body1/legf.svg" id="6_h8lv5"]
+[ext_resource type="Texture2D" uid="uid://ceqc2afo4ndeh" path="res://characters/body1/liplower.svg" id="8_qqe2n"]
+[ext_resource type="Texture2D" uid="uid://br0y7man6ipyd" path="res://characters/body1/lipupper.svg" id="9_dt5qb"]
+[ext_resource type="Texture2D" uid="uid://n5bx781hccjg" path="res://characters/body1/pupil.svg" id="10_0afj2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylqv7"]
+height = 24.0
+
+[node name="character" type="CharacterBody2D"]
+script = ExtResource("1_q2qcs")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25)
+scale = Vector2(-1.13679, 0.949402)
+shape = SubResource("CapsuleShape2D_ylqv7")
+
+[node name="legr" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_hll3k")
+
+[node name="armr" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_23jk2")
+
+[node name="head" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_a1dum")
+
+[node name="armf" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ulix6")
+
+[node name="liplower" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_qqe2n")
+
+[node name="lipupper" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_dt5qb")
+
+[node name="pupil" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_0afj2")
+
+[node name="legf" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_h8lv5")
+
+[node name="skeleton" type="Skeleton2D" parent="."]
+
+[node name="hip" type="Bone2D" parent="skeleton"]
+position = Vector2(-4, -1)
+
+[node name="back" type="Bone2D" parent="skeleton/hip"]
+position = Vector2(4, -9)
+rotation = -1.60426
+scale = Vector2(1, 1)
+
+[node name="torso" type="Sprite2D" parent="skeleton/hip/back"]
+position = Vector2(-9.9944, -0.33462)
+rotation = 1.60426
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_jc31j")
+
+[node name="legf" type="Bone2D" parent="skeleton/hip"]
+position = Vector2(2, 16)
+rotation = 1.7824
+
+[node name="shinf" type="Bone2D" parent="skeleton/hip/legf"]
+position = Vector2(19.974, -2.24513)
+rotation = -3.09479
+scale = Vector2(1, 1)
+
+[node name="footf" type="Bone2D" parent="skeleton/hip/legf/shinf"]
+position = Vector2(-0.400397, 6.31187)
+rotation = -1.59339
+
+[node name="playercamera" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_speed = 10.0
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -34.0
+offset_top = -60.0
+offset_right = 35.0
+offset_bottom = -36.0
+
+[node name="poslabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 64.0
+offset_bottom = 23.0
+text = "position"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5b66xb0gj8bu"]
+
+[ext_resource type="PackedScene" uid="uid://3s3f46rrnty7" path="res://game/world.tscn" id="1_c8b6g"]
+[ext_resource type="Script" path="res://dev/instant_game.gd" id="1_u1twk"]
+[ext_resource type="PackedScene" uid="uid://cqo63gf4omp5w" path="res://characters/base character.tscn" id="2_0kksk"]
+[ext_resource type="PackedScene" uid="uid://r11cdd6awh8s" path="res://entities/landscape/rock1.tscn" id="3_uv21t"]
+[ext_resource type="PackedScene" uid="uid://cijfss7sg6att" path="res://entities/landscape/rock2.tscn" id="4_gf12u"]
+[ext_resource type="PackedScene" uid="uid://bbis7cwmp78vr" path="res://entities/foliage/trees/joshua.tscn" id="5_vqb5t"]
+[ext_resource type="PackedScene" uid="uid://d002nwkgxfbro" path="res://gui/menus/gamegui.tscn" id="6_n1376"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_u1twk")
+
+[node name="World" parent="." instance=ExtResource("1_c8b6g")]
+
+[node name="rock1" parent="." instance=ExtResource("3_uv21t")]
+position = Vector2(2360, 1450)
+rotation = -0.19475
+
+[node name="character" parent="." instance=ExtResource("2_0kksk")]
+position = Vector2(2227, 1436)
+
+[node name="Node2D" parent="." instance=ExtResource("4_gf12u")]
+position = Vector2(2474, 1451)
+
+[node name="Node2D2" parent="." instance=ExtResource("5_vqb5t")]
+position = Vector2(2093, 1278)
+
+[node name="Node2D3" parent="." instance=ExtResource("5_vqb5t")]
+position = Vector2(2291, 1680)
+
+[node name="gamegui" parent="." instance=ExtResource("6_n1376")]

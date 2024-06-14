@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://be04fqsjvpusm"]
+
+[ext_resource type="Texture2D" uid="uid://c0vf53w57ie3e" path="res://entities/foliage/bushes/yucca1.svg" id="1_cqycu"]
+[ext_resource type="Script" path="res://dev/paneltestwind.gd" id="2_6d8nd"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_cqycu")
+script = ExtResource("2_6d8nd")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 1.15
+anchor_bottom = 0.202
+offset_left = -39.0
+offset_top = -99.0
+offset_right = 0.399994
+offset_bottom = -23.848
+
+[node name="cont" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 50.0
+
+[node name="pos" type="Label" parent="Panel/cont"]
+layout_mode = 2
+text = "reteterttt"
+
+[node name="zindex" type="Label" parent="Panel/cont"]
+layout_mode = 2
+text = "reteterttt"
+
+[node name="setposition" type="Label" parent="Panel/cont"]
+layout_mode = 2
+text = "setposition"

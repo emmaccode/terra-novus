@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbis7cwmp78vr"]
+
+[ext_resource type="Texture2D" uid="uid://dvfwduupuq44u" path="res://entities/foliage/trees/joshua-tree.svg" id="1_klg50"]
+[ext_resource type="Script" path="res://dev/paneltestwind.gd" id="2_3yngs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mtax"]
+size = Vector2(40.7273, 33.5238)
+
+[node name="joshua tree" type="Sprite2D"]
+texture = ExtResource("1_klg50")
+script = ExtResource("2_3yngs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(5, -59)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-9, 107)
+scale = Vector2(0.34375, 0.954545)
+shape = SubResource("RectangleShape2D_3mtax")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 1.15
+anchor_bottom = 0.202
+offset_left = -37.0
+offset_top = -114.0
+offset_right = -50.55
+offset_bottom = -112.934
+
+[node name="cont" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 50.0
+
+[node name="pos" type="Label" parent="Panel/cont"]
+layout_mode = 2
+text = "reteterttt"
+
+[node name="zindex" type="Label" parent="Panel/cont"]
+layout_mode = 2
+text = "reteterttt"

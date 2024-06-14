@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfkxe1yfaf248"]
+
+[ext_resource type="Texture2D" uid="uid://cjbmfoh035gj4" path="res://entities/foliage/cacti/cholla1.svg" id="1_ts5ws"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_ts5ws")

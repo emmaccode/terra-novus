@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://4i6yfip7yhxf"]
+
+[ext_resource type="PackedScene" uid="uid://3s3f46rrnty7" path="res://game/world.tscn" id="1_hgt3d"]
+[ext_resource type="PackedScene" uid="uid://c840o5mxmbsws" path="res://gui/menus/main.tscn" id="2_jgh5g"]
+[ext_resource type="PackedScene" uid="uid://blu4dpsuimgpj" path="res://gui/menus/devmenu.tscn" id="3_8q7yi"]
+
+[node name="main_menu" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_hgt3d")]
+
+[node name="selectormenu" parent="." instance=ExtResource("2_jgh5g")]
+
+[node name="devmenu" parent="." instance=ExtResource("3_8q7yi")]
+visible = true
