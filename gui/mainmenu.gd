@@ -12,8 +12,8 @@ func _ready():
 	
 func _process(delta):
 	var pos = $Camera2D.position
-	pos.x += .25
-	pos.y += .25
+	pos.x += .75
+	pos.y += .75
 	if (saved_pos * 32)- pos.x / 32 < 1080 or (saved_pos * 32) - pos.y < 1080:
 		print("generated a chunk!")
 		$World.generate_chunk(chunk_size, Vector2(saved_pos, saved_pos))

@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 LOADER="*res://sys/loader.tscn"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [dotnet]
 
 project/assembly_name="lonely acres"

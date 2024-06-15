@@ -5,8 +5,14 @@
 [node name="top" type="VBoxContainer" parent="."]
 offset_left = 11.0
 offset_top = 8.0
-offset_right = 84.0
-offset_bottom = 85.0
+offset_right = 981.0
+offset_bottom = 139.0
+
+[node name="v" type="HBoxContainer" parent="top"]
+layout_mode = 2
+
+[node name="version" type="Label" parent="top/v"]
+layout_mode = 2
 
 [node name="cpuinfo" type="HBoxContainer" parent="top"]
 layout_mode = 2
@@ -24,6 +30,16 @@ layout_mode = 2
 [node name="memory" type="Label" parent="top/meminfo"]
 layout_mode = 2
 
+[node name="pos" type="HBoxContainer" parent="top"]
+layout_mode = 2
+
+[node name="version2" type="Label" parent="top/pos"]
+layout_mode = 2
+text = "position:"
+
+[node name="position" type="Label" parent="top/pos"]
+layout_mode = 2
+
 [node name="fpscont" type="HBoxContainer" parent="top"]
 layout_mode = 2
 
@@ -34,19 +50,3 @@ text = "fps:"
 [node name="fpslabel" type="Label" parent="top/fpscont"]
 layout_mode = 2
 text = "0"
-
-[node name="v" type="HBoxContainer" parent="top"]
-layout_mode = 2
-
-[node name="version" type="Label" parent="top/v"]
-layout_mode = 2
-
-[node name="pos" type="HBoxContainer" parent="top"]
-layout_mode = 2
-
-[node name="version2" type="Label" parent="top/pos"]
-layout_mode = 2
-text = "position:"
-
-[node name="position" type="Label" parent="top/pos"]
-layout_mode = 2

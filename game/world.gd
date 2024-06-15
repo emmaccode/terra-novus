@@ -12,20 +12,13 @@ var foliage = {0 : ["res://entities/foliage/trees/joshua.tscn",
 2: ["res://entities/foliage/trees/pine.tscn", "res://entities/foliage/bushes/fern.tscn"], 
 	3: ["res://entities/foliage/bushes/fern.tscn"], 4: []}
 
-class Entity extends Sprite2D:
-	func __init__():
-		self.id = 0
-		self.position = Vector2(0, 0)
-		self.sprite = 0
-
-class Plant extends Entity:
-	func __init__():
-		pass
-
 class Chunk:
-	func __init__(id, position):
-		self.id = id
-		self.position = position
+	var id : int
+	var position : Vector2
+	var foliage = []
+	var entities = []
+	var beings = []
+	func _ready():
 		self.foliage = []
 		self.entities = []
 		self.beings = []
@@ -37,8 +30,10 @@ var foliage_densities = [1, 3, 3, 5]
 var rng = RandomNumberGenerator.new()
 var seed = 115
 var chunk_size = 100
-var chunks = {Vector2(0, 0) : []}
+var chunks = []
+var water_height = -0.5
 var at_position = Vector2(0, 0)
+
 # tilemap info:
 # the tilemap is organized in rows, so having the same `y` will yield the same 
 # biome. The first will be the first colored base tile. The following 10 are 
@@ -57,7 +52,7 @@ func generate_chunk(chunk_size : int = chunk_size, from : Vector2 = at_position)
 		for y in range(from.y, from.y + chunk_size):
 			var noise_v = heightmap_noise.get_noise_2d(x, y)
 			var noisepos = Vector2(x, y)
-			if noise_v > 0:
+			if noise_v > water_height + .25:
 				# regular ground, or biome with variant
 				var variant_ch = rng.randi_range(1, 100)
 				var biome = get_biome(noisepos)
@@ -65,14 +60,16 @@ func generate_chunk(chunk_size : int = chunk_size, from : Vector2 = at_position)
 					biomes.set_cell(0, noisepos, source_id, Vector2i(rng.randi_range(1, 9), biome))
 				else:
 					biomes.set_cell(0, noisepos, source_id, Vector2i(0, biome))
-			elif noise_v < 0.2 && noise_v > -0.07:
+			elif noise_v > water_height:
 				# sand, connecting to water
 				biomes.set_cell(0, noisepos, 2, Vector2i(0, 0))
 				# water
-			elif noise_v < 0.0:
-				biomes.set_cell(0, noisepos, source_id, Vector2i(0, 5))
 			else:
-				pass
+				biomes.set_cell(0, noisepos, source_id, Vector2i(0, 5))
+	var ck: Chunk = Chunk.new()
+	ck.id = len(chunks)
+	ck.position = from
+	chunks.append(ck)
 
 func generate_chunk_threaded(chunk_size : int = chunk_size, from : Vector2 = Vector2(0, 0)):
 	var thread = LOADER.get_open_thread()
@@ -85,11 +82,14 @@ func generate_chunk_threaded(chunk_size : int = chunk_size, from : Vector2 = Vec
 func load_chunk():
 	pass
 
+func make_entities(chunk : Chunk):
+	pass
+
 func spawn_entities(chunk : Chunk):
 	for x in chunk_size:
 		for y in chunk_size:
-			current_biome = get_biome()
-			make_foliage(Vector2(x, y), biome)
+			var pos = Vector2(x, y)
+			make_foliage(pos, get_biome(pos))
 
 func spawn_beings():
 	pass
@@ -122,10 +122,16 @@ func get_biome(vec : Vector2):
 	else:
 		return(2)
 		
-func delete_chunk_by_position(pos : Vector2):
+func derender_chunk_by_position(pos : Vector2):
 	pass
 	
-func delete_chunk_by_id(id : int):
+func derender_chunk_by_id(id : int):
+	pass
+	
+func generate_world():
+	pass
+
+func save_world():
 	pass
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -3,6 +3,17 @@ const VERSION = "0.0.1"
 const max_threads = 3
 var THREADS = []
 var load_path = ""
+
+class Entity extends Sprite2D:
+	func _ready():
+		self.id = 0
+		self.position = Vector2(0, 0)
+		self.sprite = 0
+
+class Plant extends Entity:
+	func _ready():
+		pass
+		
 func _ready():
 	var total_threads : int = OS.get_processor_count() * 2
 	for thread in max_threads:

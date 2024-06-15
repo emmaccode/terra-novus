@@ -1,84 +1,146 @@
-[gd_scene load_steps=4 format=3 uid="uid://c840o5mxmbsws"]
+[gd_scene load_steps=8 format=3 uid="uid://c840o5mxmbsws"]
 
+[ext_resource type="Script" path="res://gui/menus/mainmenu_selector.gd" id="1_e0fes"]
 [ext_resource type="Texture2D" uid="uid://dsws2k2ccd76a" path="res://gui/graphics/menu_slice1.svg" id="1_ki5fe"]
+[ext_resource type="PackedScene" uid="uid://elh6hnvhh8yx" path="res://gui/world_preview.tscn" id="3_dp08c"]
 
-[sub_resource type="Animation" id="Animation_yyw1f"]
-resource_name = "animate_menu"
-length = 0.8
+[sub_resource type="Animation" id="Animation_t6iol"]
+resource_name = "stop"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("canvas/menu_selector:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(289, 291), Vector2(630, 291)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-300, 457), Vector2(28, 457)]
+"values": [Vector2(445, 546)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kaw21"]
+[sub_resource type="Animation" id="Animation_21gql"]
+resource_name = "animate_menu"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("canvas/menu_selector:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(448, 544), Vector2(963, 544)]
+}
+
+[sub_resource type="Animation" id="Animation_mvuew"]
+resource_name = "open_main"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("canvas/menu_selector:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(963, 544), Vector2(2887, 544)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_377ro"]
 _data = {
-"animate_menu": SubResource("Animation_yyw1f")
+"animate_menu": SubResource("Animation_21gql"),
+"open_main": SubResource("Animation_mvuew"),
+"stop": SubResource("Animation_t6iol")
 }
 
-[node name="selectormenu" type="Control"]
+[node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 1928.0
+offset_top = -1004.0
+offset_right = 1928.0
+offset_bottom = -1004.0
+grow_vertical = 0
+script = ExtResource("1_e0fes")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="canvas" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(630, 291)
-scale = Vector2(0.493122, 0.493122)
+[node name="menu_selector" type="Sprite2D" parent="canvas"]
+position = Vector2(963, 544)
+scale = Vector2(0.752344, 0.744511)
 texture = ExtResource("1_ki5fe")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 28.0
-offset_top = 457.0
-offset_right = 134.0
-offset_bottom = 593.0
+[node name="popinm" type="ColorRect" parent="canvas/menu_selector"]
+anchors_preset = -1
+anchor_top = -0.00837805
+anchor_right = 1.0
+anchor_bottom = 0.999955
+offset_left = -3840.0
+offset_top = -719.936
+offset_right = -3840.0
+offset_bottom = -719.936
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.843137)
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="worlds" type="Panel" parent="canvas/menu_selector/popinm"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 146.0
+offset_right = 970.0
+offset_bottom = 490.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" parent="canvas/menu_selector/popinm/worlds" instance=ExtResource("3_dp08c")]
+position = Vector2(25, 24)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="canvas/menu_selector"]
+offset_left = -1189.62
+offset_top = 456.676
+offset_right = -979.616
+offset_bottom = 710.676
+metadata/_edit_use_anchors_ = true
+
+[node name="worlds_button" type="Button" parent="canvas/menu_selector/VBoxContainer"]
 layout_mode = 2
 text = "worlds"
 flat = true
 
-[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="connect_button" type="Button" parent="canvas/menu_selector/VBoxContainer"]
 layout_mode = 2
 disabled = true
 text = "connect"
 flat = true
 
-[node name="settings" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="settings_button" type="Button" parent="canvas/menu_selector/VBoxContainer"]
 layout_mode = 2
 text = "settings"
 flat = true
 
-[node name="settings2" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="mods_button" type="Button" parent="canvas/menu_selector/VBoxContainer"]
 layout_mode = 2
 disabled = true
 text = "mods"
 flat = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+[node name="tests_button" type="Button" parent="canvas/menu_selector/VBoxContainer"]
+layout_mode = 2
+text = "tests"
+flat = true
+
+[node name="anims" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kaw21")
+"": SubResource("AnimationLibrary_377ro")
 }
+
+[connection signal="pressed" from="canvas/menu_selector/VBoxContainer/worlds_button" to="." method="_on_worlds_button_pressed"]
