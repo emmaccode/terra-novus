@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://4i6yfip7yhxf"]
+[gd_scene load_steps=5 format=3 uid="uid://4i6yfip7yhxf"]
 
+[ext_resource type="Script" path="res://gui/mainmenu.gd" id="1_c1q63"]
 [ext_resource type="PackedScene" uid="uid://3s3f46rrnty7" path="res://game/world.tscn" id="1_hgt3d"]
 [ext_resource type="PackedScene" uid="uid://c840o5mxmbsws" path="res://gui/menus/main.tscn" id="2_jgh5g"]
-[ext_resource type="PackedScene" uid="uid://blu4dpsuimgpj" path="res://gui/menus/devmenu.tscn" id="3_8q7yi"]
+[ext_resource type="PackedScene" uid="uid://d002nwkgxfbro" path="res://gui/menus/gamegui.tscn" id="4_aux6c"]
 
 [node name="main_menu" type="Node2D"]
+script = ExtResource("1_c1q63")
 
 [node name="World" parent="." instance=ExtResource("1_hgt3d")]
 
 [node name="selectormenu" parent="." instance=ExtResource("2_jgh5g")]
 
-[node name="devmenu" parent="." instance=ExtResource("3_8q7yi")]
-visible = true
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 326)
+
+[node name="gamegui" parent="." instance=ExtResource("4_aux6c")]

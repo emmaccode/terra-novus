@@ -5,10 +5,11 @@ var chunk_size = 50
 func _ready():
 	$World.generate_chunk(chunk_size)
 	saved_pos = chunk_size
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func generate_new_chunk():
-	print(chunk_size)
+	if LOADER.VERSION[2] == '0':
+		$gamegui/devmenu.visible = true
+	else:
+		print(LOADER.VERSION[2])
+	
 func _process(delta):
 	var pos = $Camera2D.position
 	pos.x += .25
@@ -19,4 +20,4 @@ func _process(delta):
 		$World.generate_chunk(chunk_size, Vector2(saved_pos - chunk_size, saved_pos))
 		$World.generate_chunk(chunk_size, Vector2(saved_pos, saved_pos - chunk_size))
 		saved_pos += chunk_size
-	$Camera2D.position = pos
+	$Camera2D.position = pos	

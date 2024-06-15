@@ -11,11 +11,28 @@ var foliage = {0 : ["res://entities/foliage/trees/joshua.tscn",
 1: ["res://entities/foliage/trees/pine.tscn", "res://entities/foliage/bushes/yucca.tscn"], 
 2: ["res://entities/foliage/trees/pine.tscn", "res://entities/foliage/bushes/fern.tscn"], 
 	3: ["res://entities/foliage/bushes/fern.tscn"], 4: []}
-class Entity:
+
+class Entity extends Sprite2D:
 	func __init__():
 		self.id = 0
 		self.position = Vector2(0, 0)
-		self.age = 0
+		self.sprite = 0
+
+class Plant extends Entity:
+	func __init__():
+		pass
+
+class Chunk:
+	func __init__(id, position):
+		self.id = id
+		self.position = position
+		self.foliage = []
+		self.entities = []
+		self.beings = []
+		self.player_local = []
+	func load_from_data():
+		pass
+
 var foliage_densities = [1, 3, 3, 5]
 var rng = RandomNumberGenerator.new()
 var seed = 115
@@ -44,7 +61,6 @@ func generate_chunk(chunk_size : int = chunk_size, from : Vector2 = at_position)
 				# regular ground, or biome with variant
 				var variant_ch = rng.randi_range(1, 100)
 				var biome = get_biome(noisepos)
-				make_foliage(noisepos, biome)
 				if variant_ch > 50:
 					biomes.set_cell(0, noisepos, source_id, Vector2i(rng.randi_range(1, 9), biome))
 				else:
@@ -69,8 +85,11 @@ func generate_chunk_threaded(chunk_size : int = chunk_size, from : Vector2 = Vec
 func load_chunk():
 	pass
 
-func spawn_entities():
-	pass
+func spawn_entities(chunk : Chunk):
+	for x in chunk_size:
+		for y in chunk_size:
+			current_biome = get_biome()
+			make_foliage(Vector2(x, y), biome)
 
 func spawn_beings():
 	pass
@@ -102,6 +121,12 @@ func get_biome(vec : Vector2):
 		return(1)
 	else:
 		return(2)
+		
+func delete_chunk_by_position(pos : Vector2):
+	pass
+	
+func delete_chunk_by_id(id : int):
+	pass
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	biome_noise.seed = rng.randi_range(1, 1000)

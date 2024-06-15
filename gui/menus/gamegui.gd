@@ -9,10 +9,15 @@ func _ready():
 func _process(delta):
 	if devmenu.visible:
 		$devmenu/top/fpscont/fpslabel.text = str(round(Engine.get_frames_per_second()))
-		$devmenu/top/v/version.text = "lonely acres  |  v. " + LOADER.VERSION
+		var opers = OS.get_name()
+		if opers == "Linux":
+			opers = OS.get_distribution_name()
+		$devmenu/top/v/version.text = "terra novus  " + " (" + opers + ") " + "|  v. " + LOADER.VERSION
 		var curr_pos = get_viewport().get_camera_2d().position
 		$devmenu/top/pos/position.text = "(" + str(curr_pos.x) + "," + str(curr_pos.y) + ")"
 		var core_c = OS.get_processor_count()
-		$devmenu/top/cores/cores.text = str(core_c / 2) + " (" + str(core_c) + ")"
+		$devmenu/top/cpuinfo/cores.text = str(core_c / 2) + " (" + str(core_c) + ")"
+		var meminfo = OS.get_memory_info()
+		$devmenu/top/meminfo/memory.text = "MEMORY: free/available (MB): " + str(meminfo["free"] / 1000000) + "/" + str(meminfo["physical"] / 1000000)
 	if Input.is_action_just_released("developer_overlay"):
 		devmenu.visible = not(devmenu.visible)

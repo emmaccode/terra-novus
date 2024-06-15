@@ -1,13 +1,28 @@
 [gd_scene format=3 uid="uid://blu4dpsuimgpj"]
 
 [node name="devmenu" type="CanvasLayer"]
-visible = false
 
 [node name="top" type="VBoxContainer" parent="."]
 offset_left = 11.0
 offset_top = 8.0
 offset_right = 84.0
 offset_bottom = 85.0
+
+[node name="cpuinfo" type="HBoxContainer" parent="top"]
+layout_mode = 2
+
+[node name="coreslabel" type="Label" parent="top/cpuinfo"]
+layout_mode = 2
+text = "cores (threads) :"
+
+[node name="cores" type="Label" parent="top/cpuinfo"]
+layout_mode = 2
+
+[node name="meminfo" type="HBoxContainer" parent="top"]
+layout_mode = 2
+
+[node name="memory" type="Label" parent="top/meminfo"]
+layout_mode = 2
 
 [node name="fpscont" type="HBoxContainer" parent="top"]
 layout_mode = 2
@@ -19,16 +34,6 @@ text = "fps:"
 [node name="fpslabel" type="Label" parent="top/fpscont"]
 layout_mode = 2
 text = "0"
-
-[node name="cores" type="HBoxContainer" parent="top"]
-layout_mode = 2
-
-[node name="coreslabel" type="Label" parent="top/cores"]
-layout_mode = 2
-text = "cores (threads) :"
-
-[node name="cores" type="Label" parent="top/cores"]
-layout_mode = 2
 
 [node name="v" type="HBoxContainer" parent="top"]
 layout_mode = 2

@@ -91,3 +91,5 @@ format = 2
 [node name="entities" type="Node2D" parent="."]
 
 [node name="beings" type="Node2D" parent="."]
+
+[node name="local" type="Node2D" parent="."]

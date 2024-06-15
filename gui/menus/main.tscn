@@ -63,6 +63,7 @@ flat = true
 
 [node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+disabled = true
 text = "connect"
 flat = true
 
@@ -73,6 +74,7 @@ flat = true
 
 [node name="settings2" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+disabled = true
 text = "mods"
 flat = true
 
