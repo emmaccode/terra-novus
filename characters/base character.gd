@@ -11,8 +11,8 @@ var facing = "r"
 var z = 1
 
 func _physics_process(delta):
-	z_index = global_transform.origin.y / 32
-	$Panel/poslabel.text = str(z_index)
+	z_index = abs(global_transform.origin.y / 32)
+	$Panel/poslabel.text = str(global_transform.origin.x) + ", " + str(global_transform.origin.y) + ", " + str(z_index)
 	# movement
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3s3f46rrnty7"]
+[gd_scene load_steps=14 format=3 uid="uid://3s3f46rrnty7"]
 
 [ext_resource type="Script" path="res://game/world.gd" id="1_20sd2"]
 [ext_resource type="Texture2D" uid="uid://2tq7v5m4b110" path="res://tilemaps/biomes.png" id="2_pvwad"]
@@ -26,6 +26,13 @@ frequency = 0.0068
 normalize = false
 color_ramp = SubResource("Gradient_cv3bv")
 noise = SubResource("FastNoiseLite_exigy")
+
+[sub_resource type="Gradient" id="Gradient_o50xd"]
+offsets = PackedFloat32Array(0, 0.172662, 0.390887, 0.539568, 0.623501, 1)
+colors = PackedColorArray(0.0270394, 0.0169044, 0.0377346, 1, 0.0853704, 0.075843, 0.0954244, 1, 0.306649, 0.198165, 0.269513, 1, 0.933333, 0.482353, 0.85098, 1, 0.892922, 0.860816, 0.758709, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aqlfl"]
+gradient = SubResource("Gradient_o50xd")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m771d"]
 texture = ExtResource("2_pvwad")
@@ -78,10 +85,16 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/2 = SubResource("TileSetAtlasSource_m771d")
 
+[sub_resource type="Environment" id="Environment_jy6lp"]
+ambient_light_source = 3
+ambient_light_color = Color(0.779021, 0.611569, 0.73122, 1)
+fog_enabled = true
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_20sd2")
 noise_height_text = SubResource("NoiseTexture2D_a3xka")
 biome_noise_heighttext = SubResource("NoiseTexture2D_hrrsp")
+darkscale = SubResource("GradientTexture1D_aqlfl")
 
 [node name="biomes" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ibw1n")
@@ -93,3 +106,13 @@ format = 2
 [node name="beings" type="Node2D" parent="."]
 
 [node name="local" type="Node2D" parent="."]
+
+[node name="global_tick" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="daynight" type="CanvasModulate" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jy6lp")
+
+[connection signal="timeout" from="global_tick" to="." method="_on_global_tick"]

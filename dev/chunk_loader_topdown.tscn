@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://7rqm532bupcu"]
+
+[ext_resource type="Script" path="res://dev/chunk loader topdown.gd" id="1_46xwi"]
+[ext_resource type="PackedScene" uid="uid://3s3f46rrnty7" path="res://game/world.tscn" id="2_l4oku"]
+[ext_resource type="PackedScene" uid="uid://d002nwkgxfbro" path="res://gui/menus/gamegui.tscn" id="3_6603p"]
+
+[node name="chunk loader topdown" type="Node2D"]
+script = ExtResource("1_46xwi")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="gamegui" parent="." instance=ExtResource("3_6603p")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(965, 540)
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(864, 0)
+offset_right = 795.0
+offset_bottom = 1081.0
+
+[node name="World" parent="Panel" instance=ExtResource("2_l4oku")]
+scale = Vector2(0.09, 0.09)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Panel"]
+
+[node name="Button" type="Button" parent="Panel/CanvasLayer"]
+offset_left = 1149.0
+offset_top = 37.0
+offset_right = 1613.0
+offset_bottom = 114.0
+action_mode = 0
+text = "render"
+
+[node name="HSlider" type="HSlider" parent="Panel/CanvasLayer"]
+offset_left = 1169.0
+offset_top = 141.0
+offset_right = 1594.0
+offset_bottom = 157.0
+min_value = 1.0
+max_value = 6.0
+value = 1.0
+tick_count = 1
+
+[node name="Button2" type="Button" parent="Panel/CanvasLayer"]
+offset_left = 1147.0
+offset_top = 191.0
+offset_right = 1610.0
+offset_bottom = 265.0
+text = "derender"
+
+[node name="derender" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Panel/CanvasLayer/Button" to="." method="start_press"]
+[connection signal="pressed" from="Panel/CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="timeout" from="derender" to="." method="_on_derender_timeout"]

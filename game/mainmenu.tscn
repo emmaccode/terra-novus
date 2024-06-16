@@ -10,9 +10,10 @@ script = ExtResource("1_c1q63")
 
 [node name="World" parent="." instance=ExtResource("1_hgt3d")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(575, 326)
-
 [node name="gamegui" parent="." instance=ExtResource("4_aux6c")]
 
 [node name="selectormenu" parent="." instance=ExtResource("2_jgh5g")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

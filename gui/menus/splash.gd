@@ -11,4 +11,4 @@ func _process(delta):
 	pass
 
 func on_splash_finish():
-	LOADER.quick_load("res://game/mainmenu.tscn")
+	LOADER.quick_load("res://game/mainmenu.tscn", self)

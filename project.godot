@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="terra novus"
+config/name="terra nuevo"
 run/main_scene="res://gui/menus/splash.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

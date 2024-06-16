@@ -12,7 +12,7 @@ func _process(delta):
 		var opers = OS.get_name()
 		if opers == "Linux":
 			opers = OS.get_distribution_name()
-		$devmenu/top/v/version.text = "terra novus  " + " (" + opers + ") " + "|  v. " + LOADER.VERSION
+		$devmenu/top/v/version.text = "terra nuevo  " + " (" + opers + ") " + "|  v. " + LOADER.VERSION
 		var curr_pos = get_viewport().get_camera_2d().position
 		$devmenu/top/pos/position.text = "(" + str(curr_pos.x) + "," + str(curr_pos.y) + ")"
 		var core_c = OS.get_processor_count()

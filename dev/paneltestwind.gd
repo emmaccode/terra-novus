@@ -9,5 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Panel/cont/pos.text = str(global_transform.origin.x) + "," + str(global_transform.origin.y)
-	$Panel/cont/zindex.text = str(z_index)
+	$Panel/Label2.text = str(global_transform.origin.x) + "," + str(global_transform.origin.y)
+	$Panel/Label.text = str(z_index)

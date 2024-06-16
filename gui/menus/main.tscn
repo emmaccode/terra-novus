@@ -4,22 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dsws2k2ccd76a" path="res://gui/graphics/menu_slice1.svg" id="1_ki5fe"]
 [ext_resource type="PackedScene" uid="uid://elh6hnvhh8yx" path="res://gui/world_preview.tscn" id="3_dp08c"]
 
-[sub_resource type="Animation" id="Animation_t6iol"]
-resource_name = "stop"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("canvas/menu_selector:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(445, 546)]
-}
-
 [sub_resource type="Animation" id="Animation_21gql"]
 resource_name = "animate_menu"
 length = 0.3
@@ -52,6 +36,22 @@ tracks/0/keys = {
 "values": [Vector2(963, 544), Vector2(2887, 544)]
 }
 
+[sub_resource type="Animation" id="Animation_t6iol"]
+resource_name = "stop"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("canvas/menu_selector:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(445, 546)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_377ro"]
 _data = {
 "animate_menu": SubResource("Animation_21gql"),
@@ -75,7 +75,7 @@ script = ExtResource("1_e0fes")
 layer = 2
 
 [node name="menu_selector" type="Sprite2D" parent="canvas"]
-position = Vector2(963, 544)
+position = Vector2(448, 544)
 scale = Vector2(0.752344, 0.744511)
 texture = ExtResource("1_ki5fe")
 
@@ -93,16 +93,20 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.843137)
 metadata/_edit_use_anchors_ = true
 
-[node name="worlds" type="Panel" parent="canvas/menu_selector/popinm"]
-layout_mode = 0
-offset_left = 197.0
-offset_top = 146.0
-offset_right = 970.0
-offset_bottom = 490.0
-metadata/_edit_use_anchors_ = true
+[node name="worlds" type="Control" parent="canvas/menu_selector/popinm"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Node2D" parent="canvas/menu_selector/popinm/worlds" instance=ExtResource("3_dp08c")]
-position = Vector2(25, 24)
+[node name="worldbox" type="VBoxContainer" parent="canvas/menu_selector/popinm/worlds"]
+layout_mode = 0
+offset_left = 77.0935
+offset_top = 41.6144
+offset_right = 117.094
+offset_bottom = 81.6144
+
+[node name="Node2D" parent="canvas/menu_selector/popinm/worlds/worldbox" instance=ExtResource("3_dp08c")]
+position = Vector2(675.223, 275.348)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="canvas/menu_selector"]
 offset_left = -1189.62
