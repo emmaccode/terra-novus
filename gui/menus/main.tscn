@@ -100,13 +100,13 @@ offset_bottom = 40.0
 
 [node name="worldbox" type="VBoxContainer" parent="canvas/menu_selector/popinm/worlds"]
 layout_mode = 0
-offset_left = 77.0935
-offset_top = 41.6144
-offset_right = 117.094
-offset_bottom = 81.6144
+offset_left = 654.0
+offset_top = 148.0
+offset_right = 1963.0
+offset_bottom = 654.0
 
 [node name="Node2D" parent="canvas/menu_selector/popinm/worlds/worldbox" instance=ExtResource("3_dp08c")]
-position = Vector2(675.223, 275.348)
+position = Vector2(-555.64, -63.4044)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="canvas/menu_selector"]
 offset_left = -1189.62
@@ -124,6 +124,12 @@ flat = true
 layout_mode = 2
 disabled = true
 text = "connect"
+flat = true
+
+[node name="factions_button" type="Button" parent="canvas/menu_selector/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "factions"
 flat = true
 
 [node name="settings_button" type="Button" parent="canvas/menu_selector/VBoxContainer"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce1s3vben6uck"]
+
+[ext_resource type="Texture2D" uid="uid://bgi1xssixr811" path="res://entities/foliage/bushes/deciduous-bush/1.svg" id="1_efyds"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -60)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_efyds")

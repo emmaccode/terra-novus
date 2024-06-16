@@ -45,7 +45,8 @@ func _ready():
 	BIOMES.append(carniferous_b)
 	var plains_b = Biome.new()
 	carniferous_b.name = "Plains"
-	plains_b.foliage = ["res://entities/foliage/bushes/fern.tscn"]
+	plains_b.foliage = ["res://entities/foliage/bushes/fern.tscn", "res://entities/foliage/bushes/deciduous-bush.tscn", 
+	"res://entities/foliage/bushes/tallgrass.tscn"]
 	BIOMES.append(plains_b)
 func quick_load(path, node):
 	load_path = path

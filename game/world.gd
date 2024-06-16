@@ -11,7 +11,7 @@ extends Node2D
 @export var derender_distance: int = 2000  # Adjust this value as needed
 var foliage_densities = [4, 7, 10, 11]
 var rng = RandomNumberGenerator.new()
-var chunk_size = 100
+var chunk_size = 90
 var spawn_queue = []
 var world_name = ""
 var time = 1.35
@@ -130,7 +130,7 @@ func make_foliage(chunk: Chunk, vec : Vector2, spawn = true):
 	var variant_ch = rng.randi_range(1, 100)
 	var biome = get_biome(vec)
 	var adequate_foliage = LOADER.BIOMES[biome].foliage
-	if variant_ch < foliage_densities[biome] and len(adequate_foliage) > 0:
+	if variant_ch < foliage_densities[biome] and len(adequate_foliage) > 0 and heightmap_noise.get_noise_2d(vec.x, vec.y) > water_height + .25:
 		var sel_foliage = rng.randi_range(0, len(adequate_foliage) - 1)
 		var fol_scene = load(adequate_foliage[sel_foliage])
 		var instance = fol_scene.instantiate()
@@ -250,7 +250,7 @@ func check_load_chunks():
 				$global_tick.stop()
 				return
 		var adj_size = chunk_size * 32
-		var chunk_buffer = adj_size * 0.2
+		var chunk_buffer = adj_size * 0.37
 		var x = chk.position.x * 32
 		var y = chk.position.y * 32
 		# Generate chunks based on player position relative to current chunk boundaries
