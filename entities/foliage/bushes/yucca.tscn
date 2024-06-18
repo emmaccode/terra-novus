@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://be04fqsjvpusm"]
 
-[ext_resource type="Texture2D" uid="uid://c0vf53w57ie3e" path="res://entities/foliage/bushes/yucca1.svg" id="1_cqycu"]
+[ext_resource type="Texture2D" uid="uid://dnx04wjgjtvpm" path="res://entities/foliage/bushes/yucca/yucca4.png" id="1_10en1"]
 
 [node name="Sprite2D" type="Sprite2D"]
-position = Vector2(0, -8)
-texture = ExtResource("1_cqycu")
+position = Vector2(0, -16)
+texture = ExtResource("1_10en1")

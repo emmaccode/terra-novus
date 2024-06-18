@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://binth87lnfqgr"]
 
-[ext_resource type="Texture2D" uid="uid://doyfm4trnhby1" path="res://entities/foliage/bushes/fern1.svg" id="1_n21n6"]
+[ext_resource type="Texture2D" uid="uid://t4hdiqfm63s2" path="res://entities/foliage/bushes/fern/fern10.png" id="1_klwl0"]
 
 [node name="Sprite2D" type="Sprite2D"]
-position = Vector2(0, -11)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_n21n6")
+position = Vector2(0, -16)
+texture = ExtResource("1_klwl0")

@@ -26,7 +26,7 @@ offset_bottom = 538.0
 text = "https://github.com/emmaccode"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.147
+wait_time = 10.0
 one_shot = true
 autostart = true
 

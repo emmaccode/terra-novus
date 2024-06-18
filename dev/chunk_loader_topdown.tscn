@@ -26,7 +26,7 @@ scale = Vector2(0.09, 0.09)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Panel"]
 
-[node name="Button" type="Button" parent="Panel/CanvasLayer"]
+[node name="renderbutton" type="Button" parent="Panel/CanvasLayer"]
 offset_left = 1149.0
 offset_top = 37.0
 offset_right = 1613.0
@@ -34,27 +34,25 @@ offset_bottom = 114.0
 action_mode = 0
 text = "render"
 
-[node name="HSlider" type="HSlider" parent="Panel/CanvasLayer"]
-offset_left = 1169.0
-offset_top = 141.0
-offset_right = 1594.0
-offset_bottom = 157.0
-min_value = 1.0
-max_value = 6.0
-value = 1.0
-tick_count = 1
-
-[node name="Button2" type="Button" parent="Panel/CanvasLayer"]
-offset_left = 1147.0
-offset_top = 191.0
-offset_right = 1610.0
-offset_bottom = 265.0
+[node name="derenderbutton" type="Button" parent="Panel/CanvasLayer"]
+offset_left = 1148.0
+offset_top = 149.0
+offset_right = 1611.0
+offset_bottom = 223.0
 text = "derender"
 
 [node name="derender" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="Button" type="Button" parent="."]
+offset_left = 1758.0
+offset_top = 967.0
+offset_right = 1901.0
+offset_bottom = 1049.0
+text = "main menu"
+flat = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Panel/CanvasLayer/Button" to="." method="start_press"]
-[connection signal="pressed" from="Panel/CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/CanvasLayer/renderbutton" to="." method="start_press"]
+[connection signal="pressed" from="Panel/CanvasLayer/derenderbutton" to="." method="_on_button_2_pressed"]
 [connection signal="timeout" from="derender" to="." method="_on_derender_timeout"]

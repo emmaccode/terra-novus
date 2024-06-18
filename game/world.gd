@@ -9,7 +9,7 @@ extends Node2D
 @onready var biome_noise : Noise = biome_noise_heighttext.noise
 @onready var heightmap_noise : Noise = noise_height_text.noise
 @export var derender_distance: int = 2000  # Adjust this value as needed
-var foliage_densities = [4, 7, 10, 11]
+var foliage_densities = [4, 7, 35, 11]
 var rng = RandomNumberGenerator.new()
 var chunk_size = 90
 var spawn_queue = []
@@ -18,7 +18,7 @@ var time = 1.35
 var chunks = []
 var loaded_chunks = []
 var water_height = -0.5
-var spawn_rate = 80
+var spawn_rate = 100
 var at_position = Vector2(0, 0)
 var active_chunk = 0
 
@@ -78,7 +78,7 @@ func generate_biome(noisepos : Vector2):
 	else:
 		biomes.set_cell(0, noisepos, 2, Vector2i(0, 5))
 	
-func generate_chunk(chunk_size : int = chunk_size, from : Vector2 = at_position):
+func generate_chunk(from : Vector2 = at_position):
 	print("generated chunk! ", from.x, ", ", from.y)
 	var source_id = 2
 	for x in range(from.x, from.x + chunk_size):
@@ -121,7 +121,7 @@ func generate_chunk_threaded(chunk_size : int = chunk_size, from : Vector2 = Vec
 		thread.start(generate_chunk)
 		return(thread.wait_to_finish())
 	else:
-		generate_chunk(chunk_size, from)
+		generate_chunk(from)
 
 func load_chunk():
 	pass

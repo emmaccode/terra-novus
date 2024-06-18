@@ -1,9 +1,81 @@
-[gd_scene load_steps=5 format=3 uid="uid://4i6yfip7yhxf"]
+[gd_scene load_steps=10 format=3 uid="uid://4i6yfip7yhxf"]
 
 [ext_resource type="Script" path="res://gui/mainmenu.gd" id="1_c1q63"]
 [ext_resource type="PackedScene" uid="uid://3s3f46rrnty7" path="res://game/world.tscn" id="1_hgt3d"]
 [ext_resource type="PackedScene" uid="uid://c840o5mxmbsws" path="res://gui/menus/main.tscn" id="2_jgh5g"]
 [ext_resource type="PackedScene" uid="uid://d002nwkgxfbro" path="res://gui/menus/gamegui.tscn" id="4_aux6c"]
+[ext_resource type="Texture2D" uid="uid://cbrrad3grjs76" path="res://sys/terranuevo_text.png" id="5_skonm"]
+[ext_resource type="Texture2D" uid="uid://c0glet32fodx6" path="res://icon.svg" id="6_ig6dd"]
+[ext_resource type="Texture2D" uid="uid://i2lp8d5yw4xt" path="res://gui/graphics/pexels-photo-998641 (1).jpeg" id="7_2famg"]
+
+[sub_resource type="Animation" id="Animation_ine8k"]
+resource_name = "animate_intro"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("txt:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.4, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("planet:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("txt:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.4, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1020.2, -425), Vector2(1018.2, -517)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("planet:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(-0.1, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(853, -364), Vector2(853, -462)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("cam:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.1, 7.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(964, -542), Vector2(964, 842)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02ota"]
+_data = {
+"animate_intro": SubResource("Animation_ine8k")
+}
 
 [node name="main_menu" type="Node2D"]
 script = ExtResource("1_c1q63")
@@ -17,3 +89,32 @@ script = ExtResource("1_c1q63")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="cam" type="Camera2D" parent="."]
+position = Vector2(964, -542)
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_02ota")
+}
+
+[node name="txt" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1020.2, -425)
+texture = ExtResource("5_skonm")
+
+[node name="planet" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(853, -388.098)
+rotation = 4.27606
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_ig6dd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(983, -831)
+scale = Vector2(0.5, 0.417)
+texture = ExtResource("7_2famg")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

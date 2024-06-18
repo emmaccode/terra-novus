@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://diamtqhw7n5pf"]
+[gd_scene load_steps=7 format=3 uid="uid://diamtqhw7n5pf"]
 
 [ext_resource type="Script" path="res://sys/loader.gd" id="1_l2dlf"]
+[ext_resource type="AudioStream" uid="uid://bc5vmof73oml5" path="res://music/terra-nuevo.ogg" id="2_3cne8"]
 
 [sub_resource type="Animation" id="Animation_pa12q"]
 resource_name = "fade_in"
@@ -79,5 +80,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3cne8")
 
 [connection signal="animation_finished" from="overlay/animator" to="." method="_on_animator_animation_finished"]

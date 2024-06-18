@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c840o5mxmbsws"]
+[gd_scene load_steps=9 format=3 uid="uid://c840o5mxmbsws"]
 
 [ext_resource type="Script" path="res://gui/menus/mainmenu_selector.gd" id="1_e0fes"]
 [ext_resource type="Texture2D" uid="uid://dsws2k2ccd76a" path="res://gui/graphics/menu_slice1.svg" id="1_ki5fe"]
 [ext_resource type="PackedScene" uid="uid://elh6hnvhh8yx" path="res://gui/world_preview.tscn" id="3_dp08c"]
+[ext_resource type="PackedScene" uid="uid://dvsysgsfkbrjs" path="res://gui/world_creator.tscn" id="4_yg8m6"]
 
 [sub_resource type="Animation" id="Animation_21gql"]
 resource_name = "animate_menu"
@@ -100,13 +101,17 @@ offset_bottom = 40.0
 
 [node name="worldbox" type="VBoxContainer" parent="canvas/menu_selector/popinm/worlds"]
 layout_mode = 0
-offset_left = 654.0
-offset_top = 148.0
-offset_right = 1963.0
-offset_bottom = 654.0
+offset_left = 74.4353
+offset_top = 69.8208
+offset_right = 1867.44
+offset_bottom = 944.821
 
 [node name="Node2D" parent="canvas/menu_selector/popinm/worlds/worldbox" instance=ExtResource("3_dp08c")]
-position = Vector2(-555.64, -63.4044)
+position = Vector2(18.9246, 370.775)
+scale = Vector2(1, 1)
+
+[node name="world_creator" parent="canvas/menu_selector/popinm/worlds/worldbox" instance=ExtResource("4_yg8m6")]
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="canvas/menu_selector"]
 offset_left = -1189.62

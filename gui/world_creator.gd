@@ -3,13 +3,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	LOADER.get_node("music").play()
-	pass # Replace with function body.
+	$World.generate_chunk(Vector2(5, 9))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-func on_splash_finish():
-	LOADER.quick_load("res://game/mainmenu.tscn", self)

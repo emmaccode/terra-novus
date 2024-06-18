@@ -10,9 +10,5 @@ func _ready():
 	$Panel/wseed.text = str(WORLD.rng.seed)
 	$Panel/wtime.text = str(WORLD.time)
 	$Panel/World/daynight.visible = false
-	$Panel/World.chunk_size = 70
-	var chunk_size = 70
-	$Panel/World.generate_chunk()
-	$Panel/World.generate_chunk(chunk_size, Vector2(0 + chunk_size, 0))
-	$Panel/World.generate_chunk(chunk_size, Vector2(0 + chunk_size, 0 + chunk_size))
-	$Panel/World.generate_chunk(chunk_size, Vector2(0, 0 + chunk_size))
+	$Panel/World.chunk_size = 135
+	$Panel/World.generate_chunk(Vector2(0, 0))

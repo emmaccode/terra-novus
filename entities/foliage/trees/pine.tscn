@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://lqiw2sx3hpee"]
 
-[ext_resource type="Texture2D" uid="uid://c7tm12nynjblp" path="res://entities/foliage/trees/pine-tree1.svg" id="1_lgncc"]
+[ext_resource type="Texture2D" uid="uid://jiic70xvuw04" path="res://entities/foliage/trees/pine/pine10.png" id="1_a1r4q"]
 
 [node name="pine" type="Sprite2D"]
-position = Vector2(3, -125)
-texture = ExtResource("1_lgncc")
+position = Vector2(2, -111)
+texture = ExtResource("1_a1r4q")
