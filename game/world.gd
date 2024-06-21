@@ -11,7 +11,7 @@ extends Node2D
 @export var derender_distance: int = 2000  # Adjust this value as needed
 var foliage_densities = [4, 7, 35, 11]
 var rng = RandomNumberGenerator.new()
-var chunk_size = 90
+var chunk_size = 300
 var spawn_queue = []
 var world_name = ""
 var time = 1.35
@@ -33,8 +33,27 @@ class Chunk:
 		self.entities = []
 		self.beings = []
 		self.player_local = []
-	func load_from_data():
-		pass
+	func _init(id = 0, position = Vector2()):
+		self.id = id
+		self.position = position
+		self.foliage = []
+		self.entities = []
+		self.beings = []
+	func as_string() -> String:
+		var data = {
+			"id": self.id,
+			"position": self.position,
+			"foliage": [],
+			"entities": [],
+			"beings": []
+		}
+		for fol in self.foliage:
+			data["foliage"].append(fol.serialize())
+		for ent in self.entities:
+			data["entities"].append(ent.serialize())
+		for being in self.beings:
+			data["beings"].append(being.serialize())
+		return JSON.stringify(data)
 
 func get_biome(vec : Vector2):
 	var biomeinf = []
@@ -48,7 +67,36 @@ func get_biome(vec : Vector2):
 		return(1)
 	else:
 		return(2)
-		
+
+func chunk_from_string(data_str: String) -> Chunk:
+	var data = JSON.parse_string(data_str)
+	if typeof(data) != TYPE_DICTIONARY:
+		print("Invalid data format")
+		return null
+	
+	var chunk = Chunk.new()
+	chunk.id = data["id"]
+	chunk.position = data["position"]
+	chunk.foliage.clear()
+	chunk.entities.clear()
+	chunk.beings.clear()
+	
+	for fol_data in data["foliage"]:
+		var fol = LOADER.Plant.new()
+		fol.deserialize(fol_data)
+		chunk.foliage.append(fol)
+	
+	for ent_data in data["entities"]:
+		var ent = LOADER.Entity.new()
+		ent.deserialize(ent_data)
+		chunk.entities.append(ent)
+	
+	for being_data in data["beings"]:
+		var being = LOADER.Being.new()
+		being.deserialize(being_data)
+		chunk.beings.append(being)
+	
+	return chunk
 # tilemap info:
 # the tilemap is organized in rows, so having the same `y` will yield the same 
 # biome. The first will be the first colored base tile. The following 10 are 
@@ -136,11 +184,12 @@ func make_foliage(chunk: Chunk, vec : Vector2, spawn = true):
 		var instance = fol_scene.instantiate()
 		chunk.entities.append(instance)
 		var ypos = (vec.y * 32)
-		instance.z_index = abs(ypos) / 32
+		instance.z_index = ypos / 32
 		instance.global_transform.origin.x = vec.x * 32
 		instance.global_transform.origin.y = ypos
 		if spawn:
 			spawn_queue.append(instance)
+
 
 func generate_foliage(chunk : Chunk = active_chunk, spawn = true):
 	for x in range(chunk.position.x, chunk.position.x + chunk_size):
@@ -214,17 +263,18 @@ func generate_world():
 
 func save_world():
 	pass
+func update_world():
+	biome_noise.seed = rng.randi_range(1, 10000000000000)
+	heightmap_noise.seed = rng.randi_range(1, 100000000000)
 func start_world():
+	biome_noise.seed = rng.randi_range(1, 10000000000000)
+	heightmap_noise.seed = rng.randi_range(1, 100000000000)
 	var darkness_value = (sin(time - PI / 2) + 1.0) / 2.0
 	$daynight.color = darkscale.gradient.sample(darkness_value)
 	for active_player in local.get_children():
 		var chk = get_chunk_position(active_player.position)
 		generate_full(chk)
 	$global_tick.start()
-
-func _ready():
-	biome_noise.seed = rng.randi_range(1, 1000)
-	heightmap_noise.seed = rng.randi_range(1, 1000)
 	
 func _process(delta):
 	pass

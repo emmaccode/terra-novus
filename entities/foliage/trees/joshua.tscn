@@ -3,16 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://dvfwduupuq44u" path="res://entities/foliage/trees/joshua-tree/101.svg" id="1_ld3f3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3mtax"]
-size = Vector2(40.7273, 33.5238)
+size = Vector2(37.8182, 15.7143)
 
 [node name="joshua tree" type="Sprite2D"]
-position = Vector2(0, -63)
+position = Vector2(0, -16)
 texture = ExtResource("1_ld3f3")
+centered = false
+offset = Vector2(-55, -125)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(5, -59)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-9, 107)
+position = Vector2(-5.5, 52.5)
 scale = Vector2(0.34375, 0.954545)
 shape = SubResource("RectangleShape2D_3mtax")

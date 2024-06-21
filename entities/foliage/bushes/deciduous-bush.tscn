@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://ce1s3vben6uck"]
 
-[ext_resource type="Texture2D" uid="uid://bgi1xssixr811" path="res://entities/foliage/bushes/deciduous-bush/1.svg" id="1_efyds"]
+[ext_resource type="Texture2D" uid="uid://m77uqfhh1nc5" path="res://entities/foliage/bushes/deciduous-bush/10.png" id="1_h8jrk"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, -60)
+position = Vector2(0, -11)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_efyds")
+texture = ExtResource("1_h8jrk")

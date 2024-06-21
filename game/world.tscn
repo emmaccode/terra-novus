@@ -95,6 +95,7 @@ script = ExtResource("1_20sd2")
 noise_height_text = SubResource("NoiseTexture2D_a3xka")
 biome_noise_heighttext = SubResource("NoiseTexture2D_hrrsp")
 darkscale = SubResource("GradientTexture1D_aqlfl")
+derender_distance = null
 
 [node name="biomes" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ibw1n")
